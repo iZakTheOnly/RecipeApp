@@ -1,17 +1,25 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTitle from "../components/CategoryGridTile";
 
-function renderCategoryItem(itemData) {
-  return (
-    <CategoryGridTitle
-      title={itemData.item.title}
-      color={itemData.item.color}
-    />
-  );
-}
+import { CATEGORIES } from "../data/dummy-data";
 
-function CategoriesScreen() {
+function CategoriesScreen({ navigation }) {
+  function renderCategoryItem(itemData) {
+    function pressHandler() {
+      navigation.navigate("MealsOverview", {
+        categoryId: itemData.item.id,
+      });
+    }
+
+    return (
+      <CategoryGridTitle
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onPress={pressHandler}
+      />
+    );
+  }
+
   return (
     <View style={styles.rootScreen}>
       <FlatList
@@ -27,5 +35,5 @@ function CategoriesScreen() {
 export default CategoriesScreen;
 
 const styles = StyleSheet.create({
-  rootScreen: {},
+  container: {},
 });
