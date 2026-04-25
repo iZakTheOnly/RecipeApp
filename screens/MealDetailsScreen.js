@@ -4,13 +4,14 @@ import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
 import List from "../components/MealDetail/List";
 import Subtitle from "../components/MealDetail/Subtitle";
+import { ScrollView } from "react-native";
 
 function MealDetailsScreen({ navigation, route }) {
   const mealId = route.params.mealId;
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.rootContainer}>
       <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
       <Text style={styles.title}>{selectedMeal.title}</Text>
       <MealDetails
@@ -19,18 +20,22 @@ function MealDetailsScreen({ navigation, route }) {
         affordability={selectedMeal.affordability}
         textStyle={styles.details}
       />
-      <Subtitle>Ingredients</Subtitle>
-      <List data={selectedMeal.ingredients} />
-      <Subtitle>Steps</Subtitle>
-      <List data={selectedMeal.steps} />
-    </View>
+      <View style={{ alignItems: "center" }}>
+        <View style={styles.listContainer}>
+          <Subtitle>Ingredients</Subtitle>
+          <List data={selectedMeal.ingredients} />
+          <Subtitle>Steps</Subtitle>
+          <List data={selectedMeal.steps} />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 export default MealDetailsScreen;
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  rootContainer: { marginBottom: 32 },
   image: { width: "100%", height: 350, resizeMode: "cover" },
   title: {
     color: "white",
@@ -40,4 +45,7 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   details: { color: "white", fontSize: 16 },
+  listContainer: {
+    width: "90%",
+  },
 });
