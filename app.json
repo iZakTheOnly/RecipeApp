@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "RecipeApp",
-    "slug": "RecipeApp",
+    "slug": "recipeapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.isaac.jriddle.recipeapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9772e2d7-009a-40a9-86e3-1eae24821614"
+      }
+    },
+    "owner": "isaac.jriddle"
   }
 }

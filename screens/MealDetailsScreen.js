@@ -18,7 +18,7 @@ function MealDetailsScreen({ navigation, route }) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <IconButton />;
+        return <IconButton icon="star" color="white" altColor="orange" />;
       },
     });
   }, [navigation]);
